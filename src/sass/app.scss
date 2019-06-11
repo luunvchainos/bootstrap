@@ -1,0 +1,301 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Variables
+@import 'variables';
+
+// Style
+$primary-color: #191878;
+$hover-color: #1f6fb2;
+@mixin transform($property) {
+    -webkit-transform: $property;
+    -ms-transform: $property;
+    -o-transform: $property;
+    transform: $property;
+}
+@mixin transition($property) {
+    -webkit-transition: $property;
+    -moz-transition: $property;
+    -o-transition: $property;
+    transition: $property;
+}
+@mixin transition-delay($property) {
+    transition-delay: $property;
+    -webkit-transition-delay: $property;
+    -moz-transition-delay: $property;
+    -o-transition-delay: $property;
+}
+@mixin box-shadow($property) {
+    -webkit-box-shadow: $property;
+    -moz-box-shadow: $property;
+    box-shadow: $property;
+}
+.display-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+body {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6{
+    margin-bottom: 0;
+}
+a {
+    color: $primary-color;
+    &:hover{
+        color: $hover-color;
+        text-decoration: none;
+    }
+    &.color-white:hover{
+        color: $hover-color;
+    }
+}
+ol, ul, dl{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.fa {line-height: inherit}
+button:focus {
+    outline: none;
+}
+.btn:focus,
+.page-link:focus {
+    @include box-shadow(none);
+}
+.mr-3r{margin-right: 3rem !important;}
+.min-w-120{ min-width: 120px }
+.min-w-150{ min-width: 150px }
+.max-w-150{ max-width: 150px }
+.max-w-120{ max-width: 120px }
+.max-w-500{ max-width: 500px }
+.color-white{ color: #fff }
+.color-primary{ color: $primary-color }
+.background-primary{ background-color: $primary-color }
+.btn-white {
+    background-color: #fff;
+    color: $primary-color;
+    &:hover {
+        color: $hover-color;
+    }
+}
+.btn-transparent {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    &:hover {
+        color: $hover-color;
+    }
+}
+.btn-primary {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+/* header */
+.title-page {
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: 2rem;
+}
+.navbar {
+    background-color: $primary-color;
+    .btn {
+        padding: .15rem .5rem;
+        line-height: 1.6;
+    }
+    .dropdown-menu a {
+        color: #333;
+        display: block;
+        &:hover {
+            color: $primary-color;
+        }
+    }
+}
+.menu_trigger {
+    padding: 6px 30px;
+    background: #fff;
+    font-size: 1.5rem;
+    color: $primary-color;
+    cursor: pointer;
+}
+.right-header >div {
+    display: inline-block;
+    margin-right: 1rem;
+    position: relative;
+    .dropdown-menu {
+        top: 11px;
+        left: -1px;
+        right: -1px;
+        @include box-shadow( 0px 0px 30px 5px rgba(0,0,0,0.2));
+        margin: 0;
+        padding: 0;
+        li + li{
+            border-top: 1px solid #aaa;
+        }
+    }
+}
+.menu_trigger:after {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 88;
+    background-color: rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    @include transition(all 300ms);
+    @include transition-delay(150ms);
+}
+.appeared {
+    .sidebar {
+        left: 0;
+    }
+    .menu_trigger:after {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        @include transition-delay(0ms);
+    }
+}
+.sidebar {
+    background-color: #e7e6f2;
+    @include transition(all 300ms);
+    color: $primary-color;
+    position: fixed;
+    left: -400px;
+    width: 400px;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
+    overflow-y: auto;
+    >h2{
+        background-color: #fff;
+        padding: 1rem 1.5rem;
+        margin-bottom: 0;
+    }
+    li {
+        >a {
+            display: block;
+            padding: 0.7em 1.5rem;
+            font-weight: 700;
+            i{
+                margin-right: 1rem;
+            }
+        }
+        >ul{
+            background-color: #f1f1f8;
+        }
+        &.level1 >a{
+            padding-left: 3rem;
+        }
+    }
+}
+
+// List
+
+.card-header {
+    background: $primary-color;
+    display: inline-block;
+    color: #fff;
+    line-height: 22px;
+    border-bottom: 2px solid black;
+}
+.form-inline >label {
+    margin-right: .5rem;
+}
+.card-header + .card-body {
+    margin-bottom: .69rem;
+}
+.card-body,
+.top-content, .middle-content {
+    @include box-shadow( 0px 0px 30px 5px rgba(0,0,0,0.2));
+    border-radius: 5px;
+    padding: 1.5rem;
+}
+.top-content {
+    margin-bottom: .69rem;
+    border-radius: 0 0 5px 5px;
+}
+.page-link:hover,
+.page-link{
+    color: $primary-color;
+}
+.page-item.active .page-link {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+//
+.map-form {
+    padding: 1rem 4rem 1rem 7rem;
+    margin-left: 1.5rem;
+    margin-right: 7rem;
+    position: relative;
+    width: 100%;
+    color: $primary-color;
+}
+.title-abs {
+    position: absolute;
+    top: -1rem;
+    left: -1.5rem;
+    background-color: $primary-color;
+    padding: 0.6rem 1rem;
+    color: #fff;
+    border-radius: .25rem;
+}
+.title {
+    background-color: #e4f4fa;
+    color: $primary-color;
+    padding: 0.3rem 1rem;
+    margin-bottom: 1rem;
+}
+.datetime-picker input {
+    border: 0 !important;
+    height: 100% !important;
+    padding: 0 !important;
+    outline: none !important;;
+}
+
+// Responsive
+@media only screen and (min-width: 768px){
+    .show-sm {
+        display: none !important;
+    }
+}
+@media only screen and (max-width: 991px){
+    .show-lg {
+        display: none !important;
+    }
+    .title-page {
+        margin-left: 1.5rem;
+    }
+}
+@media only screen and (max-width: 475px) {
+    .right-header {
+        > div {
+            margin-right: 0.5rem;
+        }
+        .btn{
+            font-size: 0.9rem;
+        }
+    }
+    .sidebar {
+        top: 2rem;
+        left: -100vw;
+        width: 100vw;
+        bottom: 2rem;
+        > h2 {
+            padding: 0.6rem;
+            text-align: center;
+        }
+    }
+    .title-page {
+        margin-left: 1rem;
+        font-size: 1.5rem;
+    }
+    .menu_trigger {
+        padding: 6px 15px;
+    }
+}
