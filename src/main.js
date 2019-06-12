@@ -6,11 +6,16 @@ import './sass/app.scss'
 import VueRouter from 'vue-router';
 import routes from './routes';
 import axios from 'axios';
+import * as ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+// import locale from 'element-ui/lib/locale/lang/en';
+
 
 import VueLayers from 'vuelayers'
-import 'vuelayers/lib/style.css' // needs css-loader
+import 'vuelayers/lib/style.css'
 
 Vue.use(VueLayers);
+Vue.use(ElementUI);
 
 export const HTTP = axios.create({
     baseURL: `http://jsonplaceholder.typicode.com/`,
@@ -19,7 +24,10 @@ export const HTTP = axios.create({
     }
 })
 
-window.$ = window.jQuery = require('jquery');
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;
+// window.$ = window.jQuery = require('jquery');
 
 // frontend
 require('./js/custom');

@@ -12,7 +12,7 @@
                         イダ
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown_1">
-                        <li class="dropdown-item" v-for="i in options1">
+                        <li class="dropdown-item" :key="index" v-for="(i, index) in options1">
                             <router-link :to="i.href">{{ i.value }}</router-link>
                         </li>
                     </ul>
@@ -24,7 +24,7 @@
                         サービス
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdown_2">
-                        <li class="dropdown-item" v-for="i in options2">
+                        <li class="dropdown-item" :key="index" v-for="(i, index) in options2">
                             <router-link :to="i.href">{{ i.value }}</router-link>
                         </li>
                     </ul>
@@ -41,12 +41,18 @@
                             <router-link :to="{ name: 'Login' }">Login</router-link>
                         </li>
                         <li class="dropdown-item">
+                            <router-link :to="{ name: 'Order' }">Order</router-link>
+                        </li>
+                        <li class="dropdown-item">
+                            <router-link :to="{ name: 'OrderDetail' }">Order Detail</router-link>
+                        </li>
+                        <li class="dropdown-item">
                             <router-link :to="{ name: 'Map' }" >Map</router-link>
                         </li>
                         <li class="dropdown-item">
                             <router-link :to="{ name: 'List' }" >List</router-link>
                         </li>
-                        <li class="dropdown-item" v-for="i in options3">
+                        <li class="dropdown-item" :key="index" v-for="(i, index) in options3">
                             <router-link :to="i.href">{{ i.value }}</router-link>
                         </li>
                     </ul>
@@ -56,9 +62,11 @@
         <nav class="sidebar">
             <h2 class="sidebar-title">IDX</h2>
             <ul class="">
-                <li v-for="(item, index) in menu" class="level0" aria-expanded="false"><a data-toggle="collapse" :href="toHref(index)"><span>{{ item.name }}</span></a>
-                    <ul :class="toClass(index)" class="collapse">
-                        <li class="level1" v-for="i in item.data">
+                <li :key="index" v-for="(item, index) in menu" class="level0" aria-expanded="false">
+                    <a v-if="item.data.length > 0" data-toggle="collapse" :href="toHref(index)"><span>{{ item.name }}</span></a>
+                    <router-link v-if="item.data.length === 0" :to="item.href"><span>{{ item.name }}</span></router-link>
+                    <ul :class="toClass(index)" class="collapse" v-if="item.data.length > 0">
+                        <li :key="index2" class="level1" v-for="(i, index2) in item.data">
                             <router-link :to="'/'+i.href">
                                 <i class="fa fa-barcode"></i><span>{{ i.value }}</span>
                             </router-link>
@@ -92,49 +100,55 @@
                     {value: 'パスワード変更', href: '#'},
                     {value: 'ログアウト', href: '#'}
                 ],
-                pagination: {
-                    current_page: [
-                        {name: 'name'},
-                        {
-                            c: 'a'
-                        },
-                        {
-                            c: 'a'
-                        }
-                    ]
-                },
                 menu: [
                     {
-                        name: 'ELTRES',
-                        data: [
-
-                            {value: 'ELTRES', href: 'list'},
-                            {value: 'ZETA', href: '#'},
-                            {value: 'LoRa', href: '#'},
-                            {value: 'Cat-M1', href: '#'},
-                            {value: 'ネッツワイヤレス', href: '#'},
-                            {value: 'NGN-VPN', href: '#'}
-                        ]},
-                    {
-                        name: 'ELTRES',
+                        name: 'コネクティビィティ',
+                        href: '#',
                         data: [
                             {value: 'ELTRES', href: 'list'},
-                            {value: 'ZETA', href: '#'},
-                            {value: 'LoRa', href: '#'},
-                            {value: 'Cat-M1', href: '#'},
-                            {value: 'ネッツワイヤレス', href: '#'},
-                            {value: 'NGN-VPN', href: '#'}
-                        ]},
+                            {value: 'ZETA', href: 'list'},
+                            {value: 'LoRa', href: 'list'},
+                        ]
+                    },
                     {
-                        name: 'ELTRES',
+                        name: '注文',
+                        href: '#',
                         data:[
-                            {value: 'ELTRES', href: 'list'},
-                            {value: 'ZETA', href: '#'},
-                            {value: 'LoRa', href: '#'},
-                            {value: 'Cat-M1', href: '#'},
-                            {value: 'ネッツワイヤレス', href: '#'},
-                            {value: 'NGN-VPN', href: '#'}
-                        ]},
+                            {value: 'コネクティビィティ契約一覧', href: 'order'},
+                            {value: 'ツール契約一覧', href: 'order/detail'},
+                        ]
+                    },
+                    {
+                        name: 'アカウント管理',
+                        href: '#',
+                        data:[
+                            {value: 'アカウント', href: 'account'},
+                        ]
+                    },
+                    {
+                        name: '利用料金',
+                        href: '#',
+                        data:[
+                            {value: '利用料金', href: 'fee'},
+                            {value: 'ロール', href: 'bill'},
+                        ]
+                    },
+                    {
+                        name: 'お知らせ',
+                        href: '#',
+                        data:[
+                            {value: 'お知らせ一覧', href: 'notice'},
+                            {value: 'お知らせ情報', href: 'notice/detail'},
+                        ]
+                    },
+                    {
+                        name: '問い合わせ',
+                        href: '#',
+                        data:[
+                            {value: '問い合わせ一覧', href: 'question'},
+                            {value: '問い合わせ情報', href: 'question/detail'},
+                        ]
+                    },
                 ],
             };
         },

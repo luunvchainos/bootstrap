@@ -12,6 +12,7 @@
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "core-js": "^2.6.5",
+    "element-ui": "^2.9.1",
     "jquery": "^3.4.1",
     "luxon": "^1.16.0",
     "marker-clusterer-plus": "^2.1.4",
@@ -23,6 +24,7 @@
     "vuelayers": "^0.11.4",
     "weekstart": "^1.0.0"
   },
+
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
@@ -30,9 +32,11 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "expose-loader": "^0.7.5",
     "node-sass": "^4.12.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "webpack-cli": "^3.3.4"
   },
   "eslintConfig": {
     "root": true,
@@ -43,7 +47,9 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {},
+    "rules": {
+      "no-console": "off"
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }

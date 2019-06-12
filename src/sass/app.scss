@@ -72,6 +72,10 @@ button:focus {
 .color-white{ color: #fff }
 .color-primary{ color: $primary-color }
 .background-primary{ background-color: $primary-color }
+.hidden {
+    visibility: visible;
+    opacity: 0;
+}
 .btn-white {
     background-color: #fff;
     color: $primary-color;
@@ -90,6 +94,9 @@ button:focus {
 .btn-primary {
     background-color: $primary-color;
     border-color: $primary-color;
+}
+.table thead th {
+    border-bottom-width: 1px;
 }
 /* header */
 .title-page {
@@ -195,7 +202,11 @@ button:focus {
 }
 
 // List
-
+.custom-control-label {
+    &::after, &::before {
+        top: 3px;
+    }
+}
 .card-header {
     background: $primary-color;
     display: inline-block;
@@ -257,6 +268,20 @@ button:focus {
     padding: 0 !important;
     outline: none !important;;
 }
+// custom vuejs-date
+
+.datetime-picker {
+    .port.activePort,
+    .month-setter >button,
+    .year-month-wrapper {
+        background-color: $primary-color !important;
+    }
+    .port:hover,
+    .okButton,
+    .days {
+        color: $primary-color !important;
+    }
+}
 
 // Responsive
 @media only screen and (min-width: 768px){
@@ -299,3 +324,4 @@ button:focus {
         padding: 6px 15px;
     }
 }
+

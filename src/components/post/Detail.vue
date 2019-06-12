@@ -4,18 +4,18 @@
             <h5 class="page-title">ELTRESデバイス詳細</h5>
             <div>
                 <router-link class="btn btn-sm btn-secondary mr-2" :to="{ name: 'Detail' }">戻る</router-link>
-                <button id="modify-btn1" type="button" class="btn btn-sm btn-primary" onclick="changeSatatus()">保存</button>
+                <button type="button" class="btn btn-sm btn-primary mr-2" v-if="show">保存</button>
                 <router-link class="btn btn-sm btn-outline-secondary" :to="{ name: 'Data' }">最新データ</router-link>
             </div>
         </div>
         <div class="card">
             <div class="card-header">
-                <div class="d-flex justify-content-between">
-                    <h6>ELTRESデバイス詳細</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>ELTRESデバイス詳細</span>
                     <div class="mb-md-0">
                         <div class="btn-group mr-2">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" v-model="show">
                                 <label class="custom-control-label" for="customCheck1">変更する</label>
                             </div>
                         </div>
@@ -36,10 +36,10 @@
                                     <th width="40%">
                                         デバイス名<span color="red">*</span>
                                     </th>
-                                    <td width="100%" class="form-view">ELTRESデバイス01</td>
-                                    <td width="100%" class="form-input" id="input" style="display: none;">
-                                        <input class="form-control" value="ELTRESデバイス01" name="contractFamilyNameKanji"
-                                               type="text" size="15" style="font-size: 14px;">
+                                    <td width="100%" class="form-input" id="input">
+                                        <input v-if="show" class="form-control" value="ELTRESデバイス01" name="contractFamilyNameKanji"
+                                               type="text" size="15"/>
+                                        <span v-if="!show">ELTRESデバイス01</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -77,8 +77,8 @@
                 </form>
                 <div class="text-center">
                     <div class="justify-content-around d-inline-block">
-                        <button id="modify-btn" type="button" class="btn btn btn-secondary">戻る</button>
-                        <button id="modify-btn2" type="button" class="btn btn btn-primary d-none">保存</button>
+                        <button id="modify-btn" type="button" class="btn btn btn-secondary mr-2">戻る</button>
+                        <button id="modify-btn2" type="button" class="btn btn btn-primary" v-if="show">保存</button>
                     </div>
                 </div>
             </div>
@@ -94,6 +94,7 @@
         data() {
             return {
                 titlePage: 'ELTRESデバイス一覧',
+                show: 0,
             }
         },
 

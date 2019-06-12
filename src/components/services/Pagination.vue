@@ -6,7 +6,7 @@
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             </li>
-            <li class="page-item" v-for="page in pagesNumber" :class="{'active': page == pagination.current_page}">
+            <li class="page-item" :key="index" v-for="(page, index) in pagesNumber" :class="{'active': page == pagination.current_page}">
                 <a class="page-link" href="#" v-on:click.prevent="changePage(page)">{{ page }}</a>
             </li>
             <li class="page-item" v-if="pagination.current_page < pagination.total_pages">
