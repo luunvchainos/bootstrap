@@ -8,11 +8,14 @@ import routes from './routes';
 import axios from 'axios';
 import * as ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-// import locale from 'element-ui/lib/locale/lang/en';
-
-
 import VueLayers from 'vuelayers'
 import 'vuelayers/lib/style.css'
+
+require('./js/custom');
+
+global.jQuery = require('jquery');
+let $ = global.jQuery;
+window.$ = $;
 
 Vue.use(VueLayers);
 Vue.use(ElementUI);
@@ -22,15 +25,7 @@ export const HTTP = axios.create({
     headers: {
         Authorization: 'Bearer {token}'
     }
-})
-
-global.jQuery = require('jquery');
-var $ = global.jQuery;
-window.$ = $;
-// window.$ = window.jQuery = require('jquery');
-
-// frontend
-require('./js/custom');
+});
 
 Vue.config.productionTip = false;
 

@@ -3,7 +3,9 @@ import Router from 'vue-router'
 
 import Map from '../components/Map.vue';
 import Main from '../components/Main.vue';
-import Login from '../components/Login.vue';
+import Login from '../components/auth/Login.vue';
+import Register from '../components/auth/Register.vue';
+import MyAccount from '../components/auth/MyAccount.vue';
 import List from '../components/post/List.vue';
 import Detail from '../components/post/Detail.vue';
 import Data from '../components/post/Data.vue';
@@ -29,6 +31,8 @@ export default [
     { path: '/', name : 'Home', component: Main },
     { path: '/map', name : 'Map', component: Map },
     { path: '/login', name : 'Login', component: Login },
+    { path: '/register', name : 'Register', component: Register },
+    { path: '/customer/account', name : 'MyAccount', component: MyAccount },
     { path: '/list', name : 'List', component: List },
     { path: '/detail', name : 'Detail', component: Detail },
     { path: '/data', name : 'Data', component: Data },

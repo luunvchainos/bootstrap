@@ -15,7 +15,7 @@
                     <input type="button" class="btn btn-lg btn-primary btn-block" value="Sign in"/>
                 </form>
                 <div>
-                    <a href="./my-account-application.html" class="">アカウント申込</a>
+                    <router-link :to="{ name: 'MyAccount' }" class="">アカウント申込</router-link>
                 </div>
             </div>
         </div>
