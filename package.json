@@ -14,7 +14,7 @@
     "core-js": "^2.6.5",
     "element-ui": "^2.9.1",
     "jquery": "^3.4.1",
-    "luxon": "^1.16.0",
+    "luxon": "^2.5.2",
     "marker-clusterer-plus": "^2.1.4",
     "ol": "^5.3.3",
     "popper.js": "^1.15.0",
